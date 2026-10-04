@@ -1,0 +1,15 @@
+data/
+.local-private/
+/diary*.md
+**/diary*.md
+/release/
+node_modules/
+coverage/
+*.log
+.env
+.env.*
+!.env.example
+tests/run-*/
+*.previous
+.DS_Store
+Thumbs.db

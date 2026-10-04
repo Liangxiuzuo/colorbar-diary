@@ -1,0 +1,20 @@
+{
+  "latest": {
+    "version": 4,
+    "file": "colorbardiary_v4.html",
+    "createdAt": "2026-10-04T11:20:28.262Z",
+    "bytes": 249479,
+    "sourceHash": "7214d28adfc3b5d31e022c3fac6d246fca0114dacf3d6eeecbe2ffecb629d775",
+    "sha256": "8053434c912b39a2e78a1be2282929bab01075a0b77422df4452530bb8d3f4ef"
+  },
+  "releases": [
+    {
+      "version": 4,
+      "file": "colorbardiary_v4.html",
+      "createdAt": "2026-10-04T11:20:28.262Z",
+      "bytes": 249479,
+      "sourceHash": "7214d28adfc3b5d31e022c3fac6d246fca0114dacf3d6eeecbe2ffecb629d775",
+      "sha256": "8053434c912b39a2e78a1be2282929bab01075a0b77422df4452530bb8d3f4ef"
+    }
+  ]
+}

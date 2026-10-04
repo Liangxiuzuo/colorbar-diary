@@ -1,0 +1,19 @@
+{
+  "name": "colorbar-diary",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.cjs",
+    "test": "node --test tests/core.test.cjs",
+    "build:static": "node scripts/build-static.cjs",
+    "test:ui": "node tests/ui-language.cjs",
+    "audit": "node scripts/audit-release.cjs",
+    "release:prepare": "node scripts/prepare-release.cjs",
+    "test:release": "node tests/release-smoke.cjs"
+  },
+  "description": "Offline-first color-tagged Markdown diary",
+  "engines": {
+    "node": ">=20"
+  }
+}

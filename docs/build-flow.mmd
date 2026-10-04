@@ -1,0 +1,9 @@
+flowchart LR
+    Source["public/<br/>UI modules, styles and data core"] --> Build["scripts/build-static.cjs"]
+    Dictionary["translations.txt + localize.cjs"] --> Build
+    Build --> HTML["dist/colorbardiary_vN.html<br/>Self-contained English and Chinese views"]
+    HTML --> Boot["Choose saved language<br/>English by default"]
+    Boot --> Runtime["Offline browser application"]
+    Build --> Preview["Development page<br/>served by server.cjs"]
+    Preview --> Runtime
+    Data["User Markdown and background images"] -.->|"Loaded at runtime; never bundled"| Runtime

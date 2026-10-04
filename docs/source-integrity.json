@@ -1,0 +1,18 @@
+{
+  "core.cjs": "b49b2681cff32c9d8d58f8b42d41337d078447e6cb9b83af0ce7620b0e22c04c",
+  "server.cjs": "6903b09890c89a74c00b4298411f3f0e0951bf890c732339d0ea206266900da0",
+  "package.json": "78044b358d371ed13760aa7a95db08148ddbb34e1b0de181c09dee4350ad0113",
+  "public/app.js": "fcc4268b2d5ac7cf9feefa7fefde32f4de78e9112d90ac3133606f858d9a2a3c",
+  "public/archive.js": "5f14f0156c75d4dfb9eafa46b4ec01c6f5020bfe3c18221629b7b44d54a0c62c",
+  "public/background-black.png": "9c3fa26ef2eec6bae60e386221fd6121632cc8e224a339365bb7da9030a6945d",
+  "public/background.js": "0084788c450c5d02109e781d5c86e928367989c7b887d2b112b618d62b16b354",
+  "public/colors.js": "c0dc9b4acdbade7be3d4a9c5dd5de2401f2148e45f46183211f4b0ca56998f7b",
+  "public/core.js": "0c6dddd0011ac2df4e7df33fd810606af31802af9b2f902eeef3cc8d934524f9",
+  "public/index.html": "bc0e7f39ec39c9ac03f61a56da4269d308deee7e38a6f0eba7f31a90d077f452",
+  "public/storage-browser.js": "0c6a3255a6e28849c20c70b8b6f6eae8052027ab00abe9d36c838934611522c6",
+  "public/storage-download.js": "beddd50dd78576f1bc0edda8fd785a98a3ec19e13229879ce8fbfa84bcb9468a",
+  "public/style.css": "cd805772647b0badd73f99debd9dad57c7a62101e45132028d3839a070e614ac",
+  "scripts/build-static.cjs": "3bb1fe1b620acd59ade70148ff50b0d684d34bdb30006b33951282a76754bc23",
+  "scripts/build-id.cjs": "414c479a94189e55270cdfd3098ce7ebc99644d173e412d45c4ea2b1368f6c47",
+  "tests/core.test.cjs": "a55838fa2489404b34c1a38778429fd109800ce82fa7cdd12ec939ff467b37f3"
+}

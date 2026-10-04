@@ -1,0 +1,14 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const {buildStatic}=require('./build-static.cjs');
+const root=path.resolve(__dirname,'..'),version=require('../package.json').version;
+if(!/^\d+\.\d+\.\d+$/.test(version))throw Error('Expected a semantic release version');
+const build=buildStatic(),dir=path.join(root,'release','v'+version);
+fs.mkdirSync(dir,{recursive:true});
+const name='colorbardiary_v'+version+'.html';
+fs.copyFileSync(path.join(root,'dist',build.file),path.join(dir,name));
+fs.copyFileSync(path.join(root,'LICENSE'),path.join(dir,'LICENSE'));
+fs.writeFileSync(path.join(dir,'QUICKSTART.md'),`# Colorbar Diary v${version}\n\nOpen ${name} in desktop Chrome or Edge. Choose or create your Markdown main file and grant file access. No Node.js or installation is required.\n\nBackup downloads a dated Markdown copy. Restore adds missing dates only and skips dates already present. Keep the complete Colorbar Diary Markdown structure. Background photos are separate. Reminders need the page running and audio enabled.\n\nEnglish is the default; use the language selector for Chinese. This release packages automatic build ${build.version}; the Markdown format is independently versioned.\n\nTo verify on Windows: Get-FileHash ${name} -Algorithm SHA256\nOn macOS/Linux: shasum -a 256 ${name}\nCompare the result with SHA256SUMS.txt.\n`);
+const names=[name,'LICENSE','QUICKSTART.md'];
+fs.writeFileSync(path.join(dir,'SHA256SUMS.txt'),names.map(f=>crypto.createHash('sha256').update(fs.readFileSync(path.join(dir,f))).digest('hex')+'  '+f).join('\n')+'\n');
+fs.writeFileSync(path.join(dir,'release.json'),JSON.stringify({version,build:build.version,sourceHash:build.sourceHash,html:name,sha256:build.sha256},null,2)+'\n');
+console.log('Prepared release/v'+version+' from '+build.file);

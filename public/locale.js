@@ -1,0 +1,6 @@
+/* Language is a browser preference; diary content and tag definitions are never translated. */
+function tagLabel(tag){const defaults={health:['身心健康','Wellbeing'],knee:['膝盖','Knee'],fever:['发烧','Fever'],work:['工作','Work'],family:['家庭','Family'],social:['社交','Social'],interest:['兴趣','Interests'],software:['软件开发','Software development'],thoughts:['碎碎念','Thoughts']};const p=defaults[tag.id];return window.ColorbarLanguage==='en'&&p&&tag.name===p[0]?p[1]:tag.name;}
+window.addEventListener('DOMContentLoaded',()=>{document.documentElement.lang=window.ColorbarLanguage||'en';for(const select of document.querySelectorAll('.language-picker')){select.value=window.ColorbarLanguage||'en';select.onchange=async()=>{const lang=select.value;try{if(typeof state!=='undefined'&&state&&typeof ensureSaved==='function'&&!await ensureSaved()){select.value=window.ColorbarLanguage;return;}}catch{select.value=window.ColorbarLanguage;return;}try{localStorage.setItem('colorbar-release-language',lang)}catch{}const url=new URL(location.href);url.searchParams.set('lang',lang);location.replace(url.href);};}});
+
+const uiPairs=/*TRANSLATIONS*/ [];
+function uiMessage(value){if(window.ColorbarLanguage!=='en')return value;let s=String(value);for(const [a,b] of uiPairs)if(s===a)return b;return s;}

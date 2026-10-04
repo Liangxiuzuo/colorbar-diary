@@ -1,0 +1,17 @@
+flowchart TB
+    User["User"] --> UI["Shared browser UI<br/>Calendar · Tags · Editor · Reminders"]
+    UI --> Core["Shared data core<br/>Validation · Migration · Markdown parsing and serialization"]
+    UI --> Adapter["Storage adapter"]
+    Adapter -->|"Standalone: user grants access"| FSA["Browser File System Access API"]
+    Adapter -->|"Development: project-file mode"| Server["Local Node.js server"]
+    FSA <-->|"Read / write"| Main["User-selected Markdown main file"]
+    Server <-->|"Read / write"| Project["Project data/diary.md"]
+    Core -.->|"Shared by browser and server"| Server
+    UI -->|"Download snapshot"| Backup["Dated Markdown backup"]
+    Backup -->|"Restore: add missing dates only"| Core
+    Core -->|"Parsed or merged state"| UI
+    UI --> Background["Background image manager"]
+    Background -->|"Standalone"| Image["User-selected local image"]
+    Background -->|"Development"| Asset["Separate data/bg_pic_*.jpg"]
+    UI --> Prefs["Browser preferences and file handles<br/>Language · Layout · Brightness"]
+    Background -.->|"Missing image or permission"| Black["Black fallback"]
