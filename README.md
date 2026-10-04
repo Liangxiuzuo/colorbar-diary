@@ -14,6 +14,16 @@ Record small moments and see them together on a continuous calendar. Tags give e
 
 ![Colorbar Diary in English, showing synthetic example content](docs/images/english.png)
 
+### A diary full of small moments
+
+The same interface with more entries across tags and a softly dimmed blue-hour
+wallpaper. All entries below are fictional; the background is a separate local
+image, not part of the Markdown diary.
+
+![Colorbar Diary with a populated calendar, colorful notes and a dim mountain-lake wallpaper](docs/images/english-rich.png)
+
+[Demo wallpaper](docs/images/blue-hour-wallpaper.png) · [Image provenance and reproduction](docs/images/ASSETS.md)
+
 ## Highlights
 
 - **A continuous content board:** scroll through days, filter by tags, or switch to a multi-year overview.

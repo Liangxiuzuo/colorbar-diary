@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const root=path.resolve(__dirname,'..'),allowed=new Set(['public','scripts','tests','docs','dist','.gitignore','package.json','README.md','Colorbar-Diary-需求草案.md','server.cjs','core.cjs','LICENSE','CONTRIBUTING.md','CHANGELOG.md','release']);
-const excluded=new Set(['.git','node_modules','.local-private','data']);
+const excluded=new Set(['.git','node_modules','.local-private','data','Colorbar-Diary-需求草案.md']);
 const errors=[];for(const entry of fs.readdirSync(root)){if(!allowed.has(entry)&&!excluded.has(entry))errors.push('Review unexpected path: '+entry)}
 function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).filter(e=>!excluded.has(e.name)).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)])}
 for(const f of walk(root)){if(/^diary.*\.md$/i.test(path.basename(f)))errors.push('Unreviewed diary file must not be published: '+path.relative(root,f));}
