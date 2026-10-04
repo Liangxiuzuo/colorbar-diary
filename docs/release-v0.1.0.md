@@ -34,6 +34,9 @@ This is an initial release, not a guarantee that every browser is supported.
 
 ## Publication status
 
+Published on 2026-10-04. The repository is public and the release is no longer a draft.
+All five uploaded asset digests match the corresponding local SHA-256 values.
+
 - Source repository: https://github.com/Liangxiuzuo/colorbar-diary
 - Release location: https://github.com/Liangxiuzuo/colorbar-diary/releases/tag/v0.1.0
 - Release assets: standalone HTML, quick-start guide, MIT license, build metadata and SHA-256 checksums.

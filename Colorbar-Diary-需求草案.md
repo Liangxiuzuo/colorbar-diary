@@ -8,11 +8,13 @@ README 的核心定位：一个独立 HTML 可视化界面加唯一一个 Markdo
 
 未复制：原 data、dist 中的日记、archives、research、原 pics、原需求草案聊天记录、测试运行目录、个人照片、旧 Markdown 备份、演示文稿、电脑专用启动脚本。
 
-## 尚未执行
+## 发布状态
 
-- 未创建 GitHub 仓库、未登录或上传。
+- 已创建公开仓库 https://github.com/Liangxiuzuo/colorbar-diary，并发布 v0.1.0；发布页 https://github.com/Liangxiuzuo/colorbar-diary/releases/tag/v0.1.0。
 - 已按用户补充的发布计划采用 MIT 许可证。
 - 首次正式发布版本为 v0.1.0；自动构建号独立保留，当前对应 build 4。
+
+- 五个发布附件的 GitHub SHA-256 与本地文件逐一核对一致。
 
 ## 更新日记
 
@@ -29,3 +31,5 @@ README 的核心定位：一个独立 HTML 可视化界面加唯一一个 Markdo
 用户要求继续原计划第 3、4、5 条；当前可见记录与发布清单未包含这三条的具体内容，待用户补充原条目后执行，尚未上传或变更许可证。
 
 用户补充原发布计划并要求执行第 3、4、5 条；已准备 v0.1.0 发布包（对应 build 4）、校验值、MIT 许可证、贡献及更新文档，核心测试和隔离浏览器验证通过。日记文件已保留在不发布的本地隔离目录，原测试版源码未变；GitHub CLI 已校验安装，待用户完成浏览器授权后创建仓库并上传，尚未发布。
+
+用户确认完成 GitHub 授权，并告知额度已重置；已创建公开仓库 Liangxiuzuo/colorbar-diary、推送隔离源码并正式发布 v0.1.0，五个附件校验值一致。仅更新 github_version，原测试版未改动。
