@@ -12,8 +12,6 @@ Your Markdown file is the main data source—not a browser cache or a separate d
 
 Record small moments and see them together on a continuous calendar. Tags give each entry a color, while your writing stays in a file you control.
 
-![Colorbar Diary in English, showing synthetic example content](docs/images/english.png)
-
 ### A diary full of small moments
 
 The same interface with more entries across tags and a softly dimmed blue-hour
@@ -23,6 +21,18 @@ image, not part of the Markdown diary.
 ![Colorbar Diary with a populated calendar, colorful notes and a dim mountain-lake wallpaper](docs/images/english-rich.png)
 
 [Demo wallpaper](docs/images/blue-hour-wallpaper.png) · [Image provenance and reproduction](docs/images/ASSETS.md)
+
+### More room to look back
+
+Collapse the tag rail and editor together to give the board the full window.
+These previews filter to Work, Interests (including Software development), and
+Thoughts, using the same fictional diary and a dim Xian Ni fan-art background.
+
+![Full-width content board with selected tags and an unofficial Xian Ni themed background](docs/images/english-xian-ni-board.png)
+
+Switch to the year overview to see the same filtered diary across months.
+
+![Full-width year overview using the same tags and background](docs/images/english-xian-ni-year.png)
 
 ## Highlights
 

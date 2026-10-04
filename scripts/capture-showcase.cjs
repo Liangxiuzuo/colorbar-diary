@@ -2,6 +2,7 @@
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),{spawn}=require('node:child_process');
 const core=require('../core.cjs'),root=path.resolve(__dirname,'..');
+const themed=process.argv.includes('--xian-ni');
 const data=fs.mkdtempSync(path.join(os.tmpdir(),'colorbar-showcase-'));
 const state=core.defaults();state.settings={theme:'blackboard',opacity:55,presentation:'chalk'};
 const copy={
@@ -18,6 +19,7 @@ const copy={
 function item(id,date,index){const t=state.tags.find(t=>t.id===id),text=copy[id][index%copy[id].length];return {tagId:id,color:t.color,value:text,records:[{id:'demo-'+date+'-'+id,text,updatedAt:date+'T'+String(9+index%10).padStart(2,'0')+':15:00.000Z'}],...(id==='health'?{rating:4+index%2}:{})};}
 const ids=['health','work','family','social','interest','software','thoughts','knee','fever'];
 for(let i=0;i<49;i++){const d=new Date(Date.UTC(2026,8,14+i)),date=d.toISOString().slice(0,10);const chosen=[ids[i%ids.length],ids[(i+3)%ids.length]];state.entries[date]={body:'',items:chosen.map((id,j)=>item(id,date,i+j))};}
+if(themed)for(let i=0;i<365;i++){const date=new Date(Date.UTC(2026,0,1+i)).toISOString().slice(0,10);if(i%7===2)continue;const chosen=[ids[i%ids.length],ids[(i+3)%ids.length]];state.entries[date]={body:'',items:chosen.map((id,j)=>item(id,date,i+j))};}
 const selected='2026-10-04';state.entries[selected]={body:'',items:['health','work','thoughts'].map((id,j)=>{
  const entry=item(id,selected,j),second=item(id,selected,j+1).records[0];
  second.id+='-evening';second.updatedAt=selected+'T'+String(17+j).padStart(2,'0')+':30:00.000Z';
@@ -33,13 +35,26 @@ let server,browser;
  p.on('pageerror',e=>errors.push(e.message));
  await p.addInitScript(()=>{localStorage.setItem('colorbar-release-language','en');localStorage.setItem('colorbar-release-tag-panel',JSON.stringify({width:220,editorWidth:390}));localStorage.setItem('colorbar-release-background-brightness','48');});
  await p.goto('http://127.0.0.1:4338');await p.locator('.day').first().waitFor();
- await p.locator('#backgroundFile').setInputFiles(path.join(root,'docs/images/blue-hour-wallpaper.png'));
+ await p.locator('#backgroundFile').setInputFiles(path.join(root,'docs/images',themed?'xian-ni-wallpaper.png':'blue-hour-wallpaper.png'));
  await p.waitForFunction(()=>document.documentElement.style.getPropertyValue('--diary-background').includes('blob:'));
  await p.locator('[data-date="2026-10-04"]').click();
  await p.locator('[data-record-tag="work"]').first().click();
  await p.evaluate(()=>{const sc=document.getElementById('timeline'),cell=document.querySelector('[data-date="2026-09-21"]');sc.scrollTop=cell.offsetTop;document.activeElement.blur();});
  await p.waitForTimeout(500);
- await p.screenshot({path:path.join(root,'docs/images/english-rich.png')});
+ if(themed){
+   await p.locator('#allFilter').uncheck();
+   for(const id of ['work','interest','thoughts'])await p.locator('[data-filter="'+id+'"]').check();
+   await p.locator('#toggleTagPanel').click();
+   await p.waitForFunction(()=>document.querySelector('.editor').hidden&&document.getElementById('tagPanelContent').hidden);
+   await p.evaluate(()=>{const sc=document.getElementById('timeline'),cell=document.querySelector('[data-date="2026-09-21"]');sc.scrollTop=cell.offsetTop;document.activeElement.blur();});
+   await p.waitForTimeout(350);
+   await p.screenshot({path:path.join(root,'docs/images/english-xian-ni-board.png')});
+   await p.locator('#yearView').click();
+   await p.locator('#yearTimeline').waitFor();
+   await p.evaluate(()=>{const sc=document.getElementById('yearTimeline');sc.scrollTop=sc.querySelector('[data-year="2026"]').offsetTop;document.activeElement.blur();});
+   await p.waitForTimeout(350);
+   await p.screenshot({path:path.join(root,'docs/images/english-xian-ni-year.png')});
+ }else await p.screenshot({path:path.join(root,'docs/images/english-rich.png')});
  if(errors.length)throw Error(errors.join('\n'));
- console.log('Created docs/images/english-rich.png using fictional entries and a generated wallpaper.');
+ console.log(themed?'Created collapsed board and year previews with selected tags.':'Created docs/images/english-rich.png using fictional entries and a generated wallpaper.');
  }finally{if(browser)await browser.close();if(server)server.kill();}})().catch(e=>{console.error(e);process.exitCode=1});
